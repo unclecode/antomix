@@ -1,0 +1,9 @@
+.git
+.github
+*.log
+.DS_Store
+test/
+tests/
+*.test.js
+.env
+.env.local

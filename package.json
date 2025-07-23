@@ -1,0 +1,32 @@
+{
+  "name": "antomix",
+  "version": "1.0.0",
+  "description": "Bidirectional proxy between Anthropic and OpenAI APIs",
+  "main": "index.js",
+  "bin": {
+    "antomix": "./bin/antomix"
+  },
+  "keywords": [
+    "anthropic",
+    "openai",
+    "proxy",
+    "api",
+    "claude",
+    "gpt",
+    "antomix"
+  ],
+  "author": "unclecode",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unclecode/antomix.git"
+  },
+  "bugs": {
+    "url": "https://github.com/unclecode/antomix/issues"
+  },
+  "homepage": "https://github.com/unclecode/antomix#readme",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "dependencies": {}
+}
