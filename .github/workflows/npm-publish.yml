@@ -40,16 +40,15 @@ jobs:
       
       - name: Create GitHub Release
         if: steps.version.outputs.should_publish == 'true'
-        uses: actions/create-release@v1
+        run: |
+          gh release create "v${{ steps.version.outputs.current_version }}" \
+            --title "Release v${{ steps.version.outputs.current_version }}" \
+            --notes "## Installation
+          \`\`\`bash
+          npm install -g antomix@${{ steps.version.outputs.current_version }}
+          \`\`\`
+          
+          ## What's New
+          Check the [README](https://github.com/unclecode/antomix#readme) for full documentation and features."
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: v${{ steps.version.outputs.current_version }}
-          release_name: Release v${{ steps.version.outputs.current_version }}
-          body: |
-            ## Installation
-            ```bash
-            npm install -g antomix@${{ steps.version.outputs.current_version }}
-            ```
-          draft: false
-          prerelease: false
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
