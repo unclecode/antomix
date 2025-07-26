@@ -1,6 +1,6 @@
 {
   "name": "antomix",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Bidirectional proxy between Anthropic and OpenAI APIs",
   "main": "index.js",
   "bin": {
