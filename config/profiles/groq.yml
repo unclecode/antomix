@@ -1,0 +1,28 @@
+name: "Anthropic → Groq"
+description: "Route Anthropic requests to Groq models"
+
+# Model mappings
+models:
+  "claude-3-5-haiku-20241022": 
+    - "llama-3.1-8b-instant"
+  "claude-opus-4-20250514": 
+    - "moonshotai/kimi-k2-instruct"
+  "claude-sonnet-4-20250514": 
+    - "qwen/qwen3-32b"
+
+# Claude code specific details
+claude:
+  fast_model: "claude-3-5-haiku-20241022"
+
+# Parameter transformations for Groq models
+parameters:
+  "*":  # All Groq models
+    "[max_tokens]": "max_completion_tokens"  # Rename parameter
+    "max_completion_tokens": 16384  # Set default limit
+
+# API configuration
+api:
+  base_url: "https://api.groq.com/openai"
+  api_key: "$GROQ_API_KEY"
+  headers:
+    # Custom headers if needed

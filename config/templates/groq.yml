@@ -1,0 +1,23 @@
+name: "{name}"
+description: "Groq profile for {name}"
+api:
+  base_url: "https://api.groq.com/openai/v1"
+  api_key: "{api_key}"
+
+models:
+  claude-sonnet-4-20250514: ["llama-3.2-90b-text-preview"]
+  claude-opus-4-20250514: ["mixtral-8x7b-32768"]
+  claude-3-5-haiku-20241022: ["llama-3.2-3b-preview"]
+
+# Claude code specific details
+claude:
+  fast_model: "claude-3-5-haiku-20241022"
+
+parameters:
+  "*":
+    temperature: 
+      type: "direct"
+      value: null
+    max_tokens:
+      type: "direct"
+      value: null

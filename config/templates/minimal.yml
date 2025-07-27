@@ -1,0 +1,14 @@
+name: "{name}"
+description: "Minimal profile template for {name}"
+api:
+  base_url: "{base_url}"
+  api_key: "{api_key}"
+
+models:
+  claude-sonnet-4-20250514: ["{default_model}"]
+  claude-opus-4-20250514: ["{default_model}"]
+  claude-3-5-haiku-20241022: ["{default_model}"]
+
+# Claude code specific details
+claude:
+  fast_model: "claude-3-5-haiku-20241022"

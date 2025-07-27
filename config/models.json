@@ -1,0 +1,16 @@
+{
+  "ant_to_oai": {
+    "claude-3-5-haiku-20241022": "openai/gpt-4.1-mini",
+    "claude-opus-4-20250514": "qwen/qwen3-235b-a22b-07-25",
+    "claude-sonnet-4-20250514": "qwen/qwen3-235b-a22b-07-25"
+  },
+  "oai_to_ant": {
+    "openai/gpt-4.1": "claude-sonnet-4-20250514",
+    "openai/gpt-4.1-mini": "claude-3-5-haiku-20241022",
+    "qwen/qwen3-235b-a22b-07-25": "claude-sonnet-4-20250514"
+  },
+  "default_mappings": {
+    "ant_default": "claude-sonnet-4-20250514",
+    "oai_default": "openai/gpt-4.1"
+  }
+}

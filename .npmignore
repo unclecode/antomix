@@ -7,3 +7,4 @@ tests/
 *.test.js
 .env
 .env.local
+# Config directory is needed - don't ignore it

@@ -1,0 +1,26 @@
+name: "{name}"
+description: "OpenRouter profile for {name}"
+api:
+  base_url: "https://openrouter.ai/api/v1"
+  api_key: "{api_key}"
+  headers:
+    HTTP-Referer: "https://github.com/yourusername/yourproject"
+    X-Title: "Antomix Proxy"
+
+models:
+  claude-sonnet-4-20250514: ["anthropic/claude-3.5-sonnet"]
+  claude-opus-4-20250514: ["anthropic/claude-3.5-sonnet"] 
+  claude-3-5-haiku-20241022: ["anthropic/claude-3.5-haiku"]
+
+# Claude code specific details
+claude:
+  fast_model: "claude-3-5-haiku-20241022"
+
+parameters:
+  "*":
+    temperature: 
+      type: "direct"
+      value: null
+    max_tokens:
+      type: "direct" 
+      value: null

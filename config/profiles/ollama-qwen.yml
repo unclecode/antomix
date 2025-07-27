@@ -1,0 +1,27 @@
+name: "Anthropic → Ollama (qwen3)"
+description: "Route Anthropic requests to local Ollama with qwen3:8b"
+
+# Model mappings - all Claude models mapped to qwen3:8b
+models:
+  "claude-3-5-haiku-20241022": 
+    - "qwen3:8b"
+  "claude-opus-4-20250514": 
+    - "qwen3:8b"
+  "claude-sonnet-4-20250514": 
+    - "qwen3:8b"
+
+# Claude code specific details
+claude:
+  fast_model: "claude-3-5-haiku-20241022"
+  
+# Parameter transformations for Ollama models
+parameters:
+  "*":  # All Ollama models
+    "[max_tokens]": "max_completion_tokens"  # Rename parameter
+
+# API configuration
+api:
+  base_url: "http://127.0.0.1:11434"
+  api_key: "ollama"  # Ollama doesn't require a real API key
+  headers:
+    # Custom headers if needed

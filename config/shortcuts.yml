@@ -1,0 +1,54 @@
+# Profile/Model shortcuts for $$set command
+# Format: shortcut: "profile/model"
+# Usage: $$set:gqw message → expands to $$set:groq/qwen/qwen3-32b message
+
+shortcuts:
+
+  # Groq shortcuts
+  gqw: "groq/qwen/qwen3-32b"
+  gkm: "groq/moonshotai/kimi-k2-instruct"
+  gll: "groq/llama-3.3-70b-versatile"
+  gdp: "groq/deepseek-r1-distill-llama-70b"
+
+  # OpenRouter shortcuts
+  oqw: "openrouter-qwen/qwen/qwen3-235b-a22b-2507"
+  oqwt: "openrouter-qwen/qwen/qwen3-235b-a22b-thinking-2507"
+  oqwc: "openrouter-qwen/qwen/qwen3-coder"
+  ogmp: "openrouter-qwen/google/gemini-2.5-pro"
+  ogmf: "openrouter-qwen/google/gemini-2.5-flash"
+  omsm: "openrouter-qwen/mistralai/mistral-medium-3"
+  omsd: "openrouter-qwen/mistralai/devstral-medium"
+  omsc: "openrouter-qwen/mistralai/codestral-2501"
+  okm: "openrouter-qwen/moonshotai/kimi-k2"
+
+  # OpenAI shortcuts
+  o3pro: "openai/o3-pro"
+  o3: "openai/o3"
+  o3mini: "openai/o3-mini"
+  o4: "openai/o4-mini"
+  gpt41: "openai/gpt-4.1"
+  gpt41mini: "openai/gpt-4.1-mini"
+
+  # Anthropic shortcuts
+  opu4: "openrouter-qwen/anthropic/claude-opus-4"
+  sonnet4: "openrouter-qwen/anthropic/claude-sonnet-4"
+  haiku35: "openrouter-qwen/anthropic/claude-3.5-haiku"
+
+  # xAI shortcuts
+  grok4: "openrouter-qwen/x-ai/grok-4"
+  grok3: "openrouter-qwen/x-ai/grok-3"
+  grok3mini: "openrouter-qwen/x-ai/grok-3-mini"
+
+# Collaborative model sets for $$colab command
+colab_sets:
+  think:
+    models: "o3,oqwt,gdp,ogmp"
+    suffix: "\n\n[Note: This requires deep thinking and reasoning. Please provide step-by-step analysis, consider multiple perspectives, and explain your reasoning thoroughly.]"
+  code:
+    models: "o3,gpt41,oqwc,omsc,sonnet4"
+    suffix: "\n\n[Note: This is a coding-related query. Focus on code quality, best practices, performance, and maintainability. Provide code examples where relevant.]"
+  docs:
+    models: "gpt41,ogmp,omsm,haiku35"
+    suffix: "\n\n[Note: This is for documentation purposes. Focus on clarity, completeness, proper formatting, and helpful examples. Make it user-friendly and well-structured.]"
+
+# Add your custom shortcuts above

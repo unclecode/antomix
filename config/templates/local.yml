@@ -1,0 +1,23 @@
+name: "{name}"
+description: "Local server profile for {name}"
+api:
+  base_url: "http://localhost:1234/v1"
+  api_key: "{api_key}"
+
+models:
+  claude-sonnet-4-20250514: ["local-model"]
+  claude-opus-4-20250514: ["local-model"]
+  claude-3-5-haiku-20241022: ["local-model"]
+
+# Claude code specific details
+claude:
+  fast_model: "claude-3-5-haiku-20241022"
+
+parameters:
+  "*":
+    temperature: 
+      type: "direct"
+      value: null
+    max_tokens:
+      type: "direct"
+      value: null
