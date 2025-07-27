@@ -1,7 +1,7 @@
 # 🚀 Antomix - Universal Claude Code Proxy
 
-[![npm version](https://badge.fury.io/js/antomix.svg)](https://badge.fury.io/js/antomix)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![npm version](https://img.shields.io/npm/v/antomix.svg)](https://www.npmjs.com/package/antomix)
+[![License: TBD](https://img.shields.io/badge/License-TBD-orange.svg)](#)
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D16.0.0-brightgreen)](https://nodejs.org/)
 
 > **Use Claude Code with ANY AI model** - OpenAI, Groq, Gemini, Local Models, OpenRouter's 100+ models, and more!
@@ -30,7 +30,7 @@ npm install -g antomix
 ```
 
 ### 2️⃣ Set API Keys
-Make sure your API keys are set in your system:
+Make sure your API keys are set in your system ([How to get API keys](#-how-to-get-api-keys)):
 ```bash
 export GROQ_API_KEY="your-groq-key"           # For Groq (super fast!)
 export OPENAI_API_KEY="your-openai-key"       # For OpenAI
@@ -47,7 +47,7 @@ antomix claude --profile openrouter-qwen # [openai|groq|gemini|...]
 > [!IMPORTANT]
 > **When you exit Claude Code, the proxy automatically stops and cleans up!**
 
-*[GIF animation would go here showing the launch process]*
+*[GIF Here I will add a video or GIF animation to show how it works]*
 
 ### 4️⃣ $$set Command - Use Any Model for Single Messages
 
@@ -358,6 +358,28 @@ antomix logs --session <session-id>
 
 ---
 
+## 🔑 How to Get API Keys
+
+Don't have API keys yet? Here's where to create them:
+
+### Free/Fast Providers
+- **🔥 Groq** (Lightning fast inference) → [Get API Key](https://console.groq.com/keys)
+- **🌟 OpenRouter** (100+ models, some free) → [Get API Key](https://openrouter.ai/keys)
+
+### Premium Providers  
+- **🤖 OpenAI** (GPT models) → [Get API Key](https://platform.openai.com/api-keys)
+- **🧠 Anthropic** (Claude models) → [Get API Key](https://console.anthropic.com/keys)
+- **💎 Google Gemini** → [Get API Key](https://aistudio.google.com/app/apikey)
+
+### Specialty Providers
+- **🔬 Mistral AI** → [Get API Key](https://console.mistral.ai/api-keys/)
+- **🚀 xAI** (Grok models) → [Get API Key](https://console.x.ai/)
+
+> [!TIP]
+> **Start with Groq or OpenRouter!** They offer free tiers and are super fast. You can always add other providers later.
+
+---
+
 ## 📋 Available Profiles
 
 - `groq` - Groq API (super fast inference)
@@ -382,7 +404,7 @@ Found a bug? Want a new provider?
 
 ## 📄 License
 
-Not yet licensed, but will be soon. Stay tuned!
+License to be determined. Please check back for updates on licensing terms.
 
 ---
 
