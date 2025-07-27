@@ -102,6 +102,34 @@ $$profiles                     # See all available profiles
 
 ---
 
+## 🤝 Collaborative AI - Query Multiple Models Simultaneously
+
+**Get diverse perspectives from multiple AI models in one shot!** The `$$colab` command lets you query several models in parallel and see all their responses together.
+
+```bash
+# Ask multiple models for help debugging
+$$colab o3,gpt41,oqw,grok4 Why is my Redis connection timing out in production?
+
+# Get creative ideas from different AI perspectives  
+$$colab gpt41,ogmp,sonnet4,grok4 Write a catchy marketing tagline for an eco-friendly water bottle
+
+# Compare solutions from various models
+$$colab o3,oqwt,gdp,gll What's the most efficient sorting algorithm for partially sorted data?
+
+# Use 'fresh' to exclude conversation history for unbiased responses
+$$colab oqw,o3pro,sonnet4 fresh Review this architecture without context
+```
+
+**How it works:**
+- List models separated by commas (NO spaces: `o3,gpt41,gll` ✅ not `o3, gpt41, gll` ❌)
+- Models execute in parallel - if one fails, others still respond
+- See all responses in one organized view
+
+> [!TIP]
+> Check the detailed docs below for pre-configured model sets like `think`, `code`, and `docs` that group the best models for specific tasks!
+
+---
+
 ## ✨ Outstanding Features
 
 <details>
@@ -112,6 +140,18 @@ $$profiles                     # See all available profiles
 - **Tool calls** work seamlessly across providers
 - **Function calling** preserved and translated
 - **System messages** handled correctly
+
+</details>
+
+<details>
+<summary>🤝 <strong>Collaborative AI Querying</strong></summary>
+
+- **Parallel model execution** - Query multiple models simultaneously
+- **Named model sets** - Pre-configured groups for specific tasks (think, code, docs)
+- **Custom suffixes** - Add context to guide model responses
+- **Fresh mode** - Exclude conversation history for unbiased responses
+- **Graceful failure handling** - If one model fails, others still respond
+- **Response aggregation** - See all model outputs in one organized view
 
 </details>
 
@@ -214,6 +254,14 @@ antomix shortcuts remove <name>                   # Remove shortcut
 antomix shortcuts stats                            # Show shortcuts statistics
 ```
 
+### Collaborative AI Management
+```bash
+antomix colab                                      # List all colab sets
+antomix colab list                                 # List all colab sets
+antomix colab add <name> <models> [-- <suffix>]   # Add new colab set
+antomix colab remove <name>                       # Remove colab set
+```
+
 ### Logs and Monitoring
 ```bash
 antomix logs                                       # View recent logs
@@ -255,6 +303,31 @@ $$shortcuts add myfast groq/llama-3.3-70b-versatile  # Add custom shortcut
 $$shortcuts remove myfast      # Remove shortcut
 $$shortcuts stats              # Show shortcuts statistics
 ```
+
+### `$$colab` Command - Collaborative AI Queries
+```bash
+# Using named sets (recommended for common tasks)
+$$colab think How do I scale this architecture to 1M users?
+$$colab code Implement a rate limiter with Redis
+$$colab docs Write API documentation for this endpoint
+
+# Direct model lists (comma-separated, NO spaces!)
+$$colab o3,gpt41,sonnet4 Analyze this code for security issues
+$$colab gll,gdp,oqw fresh Compare these database options
+$$colab oqwt,o3pro,grok4 What's wrong with this algorithm?
+
+# Managing collaborative sets
+$$colab set review gpt41,ogmf -- Please review this critically
+$$colab set debug o3,gpt41 -- Debug this step by step
+$$colab remove debug
+$$colab                        # List all available sets
+```
+
+**Syntax:**
+- `$$colab <set-name> <query>` - Use a pre-configured set
+- `$$colab <models> [fresh] <query>` - Direct model list
+- `$$colab set <name> <models> [-- <suffix>]` - Create new set
+- `$$colab remove <name>` - Remove a set
 
 ### Profile Management
 ```bash
