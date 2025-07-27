@@ -36,18 +36,8 @@ export GROQ_API_KEY="your-groq-key"           # For Groq (super fast!)
 export OPENAI_API_KEY="your-openai-key"       # For OpenAI
 export GEMINI_API_KEY="your-gemini-key"       # For Gemini
 export OPENROUTER_API_KEY="your-or-key"       # For OpenRouter (100+ models)
+# Local models (Ollama) work without API keys!
 ```
-
-### 2.5️⃣ Local Models Setup (Optional)
-For **Ollama** (default local model profile):
-```bash
-# Install Ollama first: https://ollama.ai
-ollama pull qwen:8b                           # Download the model
-# No API key needed - Antomix auto-detects localhost!
-```
-
-> **⚠️ Local Model Performance Note:**
-> Claude Code sends long system prompts, tools, and large context windows. This may push your GPU to its limits 🔥. Performance depends entirely on your hardware. **LM Studio** and **vLLM** profiles coming soon!
 
 ### 3️⃣ Launch Claude Code with Any Model
 ```bash
@@ -55,7 +45,7 @@ ollama pull qwen:8b                           # Download the model
 antomix claude
 
 # Or specify profile directly  
-antomix claude --profile openrouter-qwen # [openai|groq|gemini|...]
+antomix claude --profile openrouter-qwen # [openai|groq|gemini|ollama|...]
 ```
 
 > **💡 Tip:** Use `antomix profiles` to list all available profiles. Missing API keys? Antomix guides you through setup!
@@ -64,6 +54,32 @@ antomix claude --profile openrouter-qwen # [openai|groq|gemini|...]
 > **When you exit Claude Code, the proxy automatically stops and cleans up!**
 
 *[GIF Here I will add a video or GIF animation to show how it works]*
+
+### 3️⃣ Collaborative AI - Query Multiple Models Simultaneously
+
+**Get diverse perspectives from multiple AI models in one shot!** The `$$colab` command lets you query several models in parallel and see all their responses together.
+
+```bash
+# Ask multiple models for help debugging
+$$colab o3,gpt41,oqw,grok4 Why is my Redis connection timing out in production?
+
+# Get creative ideas from different AI perspectives  
+$$colab gpt41,ogmp,sonnet4,grok4 Write a catchy marketing tagline for an eco-friendly water bottle
+
+# Compare solutions from various models
+$$colab o3,oqwt,gdp,gll What's the most efficient sorting algorithm for partially sorted data?
+
+# Use 'fresh' to exclude conversation history for unbiased responses
+$$colab oqw,o3pro,sonnet4 fresh Review this architecture without context
+```
+
+**How it works:**
+- List models separated by commas (NO spaces: `o3,gpt41,gll` ✅ not `o3, gpt41, gll` ❌)
+- Models execute in parallel - if one fails, others still respond
+- See all responses in one organized view
+
+> [!TIP]
+> Check the detailed docs below for pre-configured model sets like `think`, `code`, and `docs` that group the best models for specific tasks!
 
 ### 4️⃣ `$$set` Command - Use Any Model for Single Messages
 
@@ -99,34 +115,6 @@ $$profiles                     # See all available profiles
 
 > [!TIP]
 > **`$$set` is temporary, `$$switch-profile` is permanent!** Use `$$set` for one-off messages, `$$switch-profile` to change your main model.
-
----
-
-## 🤝 Collaborative AI - Query Multiple Models Simultaneously
-
-**Get diverse perspectives from multiple AI models in one shot!** The `$$colab` command lets you query several models in parallel and see all their responses together.
-
-```bash
-# Ask multiple models for help debugging
-$$colab o3,gpt41,oqw,grok4 Why is my Redis connection timing out in production?
-
-# Get creative ideas from different AI perspectives  
-$$colab gpt41,ogmp,sonnet4,grok4 Write a catchy marketing tagline for an eco-friendly water bottle
-
-# Compare solutions from various models
-$$colab o3,oqwt,gdp,gll What's the most efficient sorting algorithm for partially sorted data?
-
-# Use 'fresh' to exclude conversation history for unbiased responses
-$$colab oqw,o3pro,sonnet4 fresh Review this architecture without context
-```
-
-**How it works:**
-- List models separated by commas (NO spaces: `o3,gpt41,gll` ✅ not `o3, gpt41, gll` ❌)
-- Models execute in parallel - if one fails, others still respond
-- See all responses in one organized view
-
-> [!TIP]
-> Check the detailed docs below for pre-configured model sets like `think`, `code`, and `docs` that group the best models for specific tasks!
 
 ---
 
