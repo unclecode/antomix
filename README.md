@@ -40,9 +40,14 @@ export OPENROUTER_API_KEY="your-or-key"       # For OpenRouter (100+ models)
 
 ### 3️⃣ Launch Claude Code with Any Model
 ```bash
-# Start Claude Code with your preferred model
+# Interactive selection - choose with arrow keys ✅/❌ indicators
+antomix claude
+
+# Or specify profile directly  
 antomix claude --profile openrouter-qwen # [openai|groq|gemini|...]
 ```
+
+> **💡 Tip:** Use `antomix profiles` to list all available profiles. Missing API keys? Antomix guides you through setup!
 
 > [!IMPORTANT]
 > **When you exit Claude Code, the proxy automatically stops and cleans up!**
