@@ -49,7 +49,7 @@ antomix claude --profile openrouter-qwen # [openai|groq|gemini|...]
 
 *[GIF Here I will add a video or GIF animation to show how it works]*
 
-### 4️⃣ $$set Command - Use Any Model for Single Messages
+### 4️⃣ `$$set` Command - Use Any Model for Single Messages
 
 Switch models temporarily for individual messages without changing your main profile:
 
@@ -81,7 +81,7 @@ $$profiles                     # See all available profiles
 ```
 
 > [!TIP]
-> **\$\$set is temporary, \$\$switch-profile is permanent!** Use \$\$set for one-off messages, \$\$switch-profile to change your main model.
+> **`$$set` is temporary, `$$switch-profile` is permanent!** Use `$$set` for one-off messages, `$$switch-profile` to change your main model.
 
 ---
 
@@ -214,11 +214,11 @@ antomix --version                                  # Show version
 </details>
 
 <details>
-<summary>💬 <strong>$$ Runtime Commands</strong></summary>
+<summary>💬 <strong>`$$` Runtime Commands</strong></summary>
 
 Use these commands directly in Claude Code or any connected application:
 
-### $$set Command - Temporary Model Switching
+### `$$set` Command - Temporary Model Switching
 ```bash
 # Using shortcuts (fastest way)
 $$set:gqw How does photosynthesis work?
@@ -397,6 +397,9 @@ Found a bug? Want a new provider?
 
 1. 🌟 **Star this repo**
 2. 🐛 **Report issues** on GitHub  
+
+Following options will be available soon:
+
 3. 💡 **Suggest features** via discussions
 4. 🔀 **Submit PRs** for improvements
 
