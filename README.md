@@ -49,25 +49,39 @@ antomix claude --profile openrouter-qwen # [openai|groq|gemini|...]
 
 *[GIF animation would go here showing the launch process]*
 
-### 4️⃣ Have Fun with $$ Commands
-Now that you're running, try switching models on the fly! Type these directly in Claude Code:
+### 4️⃣ $$set Command - Use Any Model for Single Messages
+
+Switch models temporarily for individual messages without changing your main profile:
 
 ```bash
-# Switch to super-fast Groq
-$$switch-profile groq
+# Using shortcuts (24 pre-configured)
+$$set:gqw What's the capital of France?
+$$set:o3pro Solve this complex problem: [problem]  
+$$set:grok4 Write a funny story about AI
 
-# Check what model you're using
-$$status
+# Using direct profile/model syntax
+$$set:groq/llama-3.3-70b-versatile Explain quantum computing
+$$set:openai/o3-pro Analyze this code: [code]
+$$set:openrouter-qwen/anthropic/claude-opus-4 Deep analysis needed
+```
 
-# Switch to OpenAI 
-$$switch-profile openai
+**Available shortcuts:**
+- **Groq**: `gqw` `gll` `gdp` `gkm` (fast inference)
+- **OpenAI**: `o3pro` `o3` `o4` `gpt41` (latest models) 
+- **OpenRouter**: `oqw` `ogmp` `omsm` `grok4` (100+ models)
+- **Anthropic**: `opu4` `sonnet4` `haiku35` (Claude models)
 
-# See all available profiles
-$$profiles
+Manage profiles and system settings:
+
+```bash
+$$switch-profile groq          # Switch main profile to Groq
+$$status                       # Check current model and status
+$$shortcuts                    # List and manage shortcuts  
+$$profiles                     # See all available profiles
 ```
 
 > [!TIP]
-> **No restart needed!** Switch between any model instantly while keeping your conversation going.
+> **\$\$set is temporary, \$\$switch-profile is permanent!** Use \$\$set for one-off messages, \$\$switch-profile to change your main model.
 
 ---
 
@@ -173,6 +187,16 @@ antomix profiles                                   # List available profiles
 antomix export <filename>                         # Export configuration
 ```
 
+### Shortcuts Management
+```bash
+antomix shortcuts                                  # List all shortcuts
+antomix shortcuts list                             # List all shortcuts
+antomix shortcuts edit                             # Edit shortcuts file in nano
+antomix shortcuts add <name> <profile/model>      # Add new shortcut
+antomix shortcuts remove <name>                   # Remove shortcut  
+antomix shortcuts stats                            # Show shortcuts statistics
+```
+
 ### Logs and Monitoring
 ```bash
 antomix logs                                       # View recent logs
@@ -193,6 +217,27 @@ antomix --version                                  # Show version
 <summary>💬 <strong>$$ Runtime Commands</strong></summary>
 
 Use these commands directly in Claude Code or any connected application:
+
+### $$set Command - Temporary Model Switching
+```bash
+# Using shortcuts (fastest way)
+$$set:gqw How does photosynthesis work?
+$$set:o3pro Solve this complex reasoning task
+$$set:grok4 Tell me a joke about programming
+
+# Using full profile/model syntax  
+$$set:groq/qwen/qwen3-32b Quick question here
+$$set:openai/o3-pro Complex analysis needed
+$$set:openrouter-qwen/x-ai/grok-4 Creative writing task
+```
+
+### Shortcuts Management
+```bash
+$$shortcuts                    # List all available shortcuts
+$$shortcuts add myfast groq/llama-3.3-70b-versatile  # Add custom shortcut
+$$shortcuts remove myfast      # Remove shortcut
+$$shortcuts stats              # Show shortcuts statistics
+```
 
 ### Profile Management
 ```bash
@@ -337,7 +382,7 @@ Found a bug? Want a new provider?
 
 ## 📄 License
 
-MIT License - see [LICENSE](LICENSE) file for details.
+Not yet licensed, but will be soon. Stay tuned!
 
 ---
 
