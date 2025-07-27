@@ -38,6 +38,17 @@ export GEMINI_API_KEY="your-gemini-key"       # For Gemini
 export OPENROUTER_API_KEY="your-or-key"       # For OpenRouter (100+ models)
 ```
 
+### 2.5️⃣ Local Models Setup (Optional)
+For **Ollama** (default local model profile):
+```bash
+# Install Ollama first: https://ollama.ai
+ollama pull qwen:8b                           # Download the model
+# No API key needed - Antomix auto-detects localhost!
+```
+
+> **⚠️ Local Model Performance Note:**
+> Claude Code sends long system prompts, tools, and large context windows. This may push your GPU to its limits 🔥. Performance depends entirely on your hardware. **LM Studio** and **vLLM** profiles coming soon!
+
 ### 3️⃣ Launch Claude Code with Any Model
 ```bash
 # Interactive selection - choose with arrow keys ✅/❌ indicators
@@ -59,10 +70,11 @@ antomix claude --profile openrouter-qwen # [openai|groq|gemini|...]
 Switch models temporarily for individual messages without changing your main profile:
 
 ```bash
-# Using shortcuts (24 pre-configured)
+# Using shortcuts (25+ pre-configured)
 $$set:gqw What's the capital of France?
 $$set:o3pro Solve this complex problem: [problem]  
 $$set:grok4 Write a funny story about AI
+$$set:olqw Local model response
 
 # Using direct profile/model syntax
 $$set:groq/llama-3.3-70b-versatile Explain quantum computing
