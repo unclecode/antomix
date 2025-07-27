@@ -1,4 +1,4 @@
-# 🚀 Antomix - Universal Claude Code Proxy
+# 🚀 Antomix - Universal **Claude Code** Proxy | Bidirectional Anthropic ↔ OpenAI API Bridge
 
 [![npm version](https://img.shields.io/npm/v/antomix.svg)](https://www.npmjs.com/package/antomix)
 [![License: TBD](https://img.shields.io/badge/License-TBD-orange.svg)](#)
