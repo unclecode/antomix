@@ -1,5 +1,5 @@
 name: "Anthropic → Ollama (qwen3)"
-description: "Route Anthropic requests to local Ollama with qwen3:8b"
+description: "Uses Ollama to route Anthropic requests to locally running Qwen models"
 
 # Model mappings - all Claude models mapped to qwen3:8b
 models:

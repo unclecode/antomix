@@ -1,5 +1,5 @@
 name: "Anthropic → OpenAI (Default)"
-description: "Default profile - Route Anthropic requests directly to OpenAI models"
+description: "Uses OpenAI as default provider to route Anthropic requests to GPT and O-series models"
 
 # Model mappings (from config/models_oai.json)
 models:

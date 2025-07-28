@@ -1,5 +1,5 @@
 name: "Anthropic → OpenAI"
-description: "Route Anthropic requests directly to OpenAI models"
+description: "Uses OpenAI to route Anthropic requests to GPT-4.1, O3, and other OpenAI models"
 
 # Model mappings
 models:

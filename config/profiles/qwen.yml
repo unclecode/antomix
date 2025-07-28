@@ -1,0 +1,28 @@
+name: "Anthropic → OpenRouter (Qwen)"
+description: "Uses OpenRouter to route Anthropic requests to Alibaba's Qwen models"
+
+# Model mappings
+models:
+  "claude-3-5-haiku-20241022": 
+    - "openai/gpt-4.1-mini"
+  "claude-opus-4-20250514": 
+    - "qwen/qwen3-235b-a22b-07-25"
+  "claude-sonnet-4-20250514": 
+    - "qwen/qwen3-235b-a22b-07-25"
+
+# Claude code specific details
+claude:
+  fast_model: "claude-3-5-haiku-20241022"
+  
+# Parameter transformations for Qwen models
+parameters:
+  "*":  # All Qwen models
+    "[max_tokens]": "max_completion_tokens"  # Rename parameter
+
+# API configuration
+api:
+  base_url: "https://openrouter.ai/api"
+  api_key: "$OPENROUTER_API_KEY"
+  headers:
+    "HTTP-Referer": "${APP_URL}"
+    "X-Title": "ANTOMIX Proxy"

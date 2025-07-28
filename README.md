@@ -87,10 +87,10 @@ Switch models temporarily for individual messages without changing your main pro
 
 ```bash
 # Using shortcuts (25+ pre-configured)
-$$set:gqw What's the capital of France?
+$$set:groq-qwen What's the capital of France?
 $$set:o3pro Solve this complex problem: [problem]  
-$$set:grok4 Write a funny story about AI
-$$set:olqw Local model response
+$$set:open-grok4 Write a funny story about AI
+$$set:open-llama Local model response
 
 # Using direct profile/model syntax
 $$set:groq/llama-3.3-70b-versatile Explain quantum computing
@@ -99,10 +99,10 @@ $$set:openrouter-qwen/anthropic/claude-opus-4 Deep analysis needed
 ```
 
 **Available shortcuts:**
-- **Groq**: `gqw` `gll` `gdp` `gkm` (fast inference)
+- **Groq**: `groq-qwen` `groq-llama` `groq-deepseek` `groq-kimi2` (fast inference)
 - **OpenAI**: `o3pro` `o3` `o4` `gpt41` (latest models) 
-- **OpenRouter**: `oqw` `ogmp` `omsm` `grok4` (100+ models)
-- **Anthropic**: `opu4` `sonnet4` `haiku35` (Claude models)
+- **OpenRouter**: `open-qwen` `open-geminipro` `open-mistral` `open-grok4` (100+ models)
+- **Anthropic**: `open-opu4` `open-sonnet4` `haiku35` (Claude models)
 
 Manage profiles and system settings:
 
@@ -160,6 +160,33 @@ $$help                         # Show all commands
 </details>
 
 <details>
+<summary>🔄 <strong>Proxy Mode Control</strong></summary>
+
+Control whether the proxy converts requests or passes them through directly:
+
+```bash
+# Enable proxy conversion (default)
+$$proxy on
+# → Converts Claude requests to target model requests
+# → Uses the current profile's model mappings
+# → This is the normal operating mode
+
+# Disable proxy conversion (passthrough)
+$$proxy off  
+# → Direct passthrough to original APIs
+# → No conversion or modification
+# → Useful for debugging or using original APIs
+
+# Check current proxy status
+$$proxy status
+# → Shows if proxy is ON (converting) or OFF (passthrough)
+```
+
+The `$$status` command also shows proxy status alongside profile info.
+
+</details>
+
+<details>
 <summary>📊 <strong>Advanced Features</strong></summary>
 
 - **Request/response logging** with session tracking
@@ -170,7 +197,7 @@ $$help                         # Show all commands
 - **Hot-swap models** without restarting
 - **Runtime profile switching** via $ commands
 - **Model mapping overrides** on the fly
-- **Bypass mode** for direct API access
+- **Proxy mode** for direct API access
 
 </details>
 
@@ -228,7 +255,15 @@ antomix switch <profile>                           # Switch running server profi
 
 ### Profile Management
 ```bash
-antomix profiles                                   # List available profiles
+antomix profiles                                   # List all available profiles
+antomix profiles list                             # List all available profiles
+antomix profiles list --verbose                   # Show detailed profile information
+antomix profiles show groq                        # Show full YAML configuration of a profile
+antomix profiles create                           # Create a new custom profile interactively
+antomix profiles create my-provider              # Create profile with specific name
+antomix profiles create groq                      # Duplicate existing 'groq' profile
+antomix profiles edit my-provider                # Edit custom profile in nano
+antomix profiles remove my-provider              # Remove custom profile
 antomix export <filename>                         # Export configuration
 ```
 
@@ -258,6 +293,34 @@ antomix logs --level error                         # Show only error logs
 antomix logs --session <id>                       # Show logs for specific session
 ```
 
+### AI Help Assistant
+
+Get instant help and answers about Antomix using AI:
+
+```bash
+antomix ask "<question>"                           # Ask questions about Antomix
+antomix ask "how do I create a custom profile?"    # Get help with specific tasks
+antomix ask "what models are available?"           # Learn about available models
+antomix ask "how to use $$colab command?"          # Learn about specific features
+```
+
+**Features:**
+- 🤖 Uses AI to answer questions based on the official README documentation
+- 📚 Automatically fetches latest docs from GitHub (24-hour cache)
+- 🎨 Beautiful markdown-formatted responses in your terminal
+- 🔄 Remembers your preferred AI profile for consistent experience
+- ⚡ Streaming responses with animated spinner
+
+**First-time setup:**
+- Select your preferred AI profile on first use
+- Change profile anytime: `rm ~/.antomix/cache/ask-profile.json`
+
+**Note:** Quotes are required for questions with special characters:
+```bash
+antomix ask "how to create a profile?"    # ✅ Correct
+antomix ask how to create a profile?      # ❌ Shell may interpret ? as wildcard
+```
+
 ### Utilities
 ```bash
 antomix --help                                     # Show help
@@ -274,9 +337,9 @@ Use these commands directly in Claude Code or any connected application:
 ### `$$set` Command - Temporary Model Switching
 ```bash
 # Using shortcuts (fastest way)
-$$set:gqw How does photosynthesis work?
+$$set:groq-qwen How does photosynthesis work?
 $$set:o3pro Solve this complex reasoning task
-$$set:grok4 Tell me a joke about programming
+$$set:open-grok4 Tell me a joke about programming
 
 # Using full profile/model syntax  
 $$set:groq/qwen/qwen3-32b Quick question here
@@ -333,11 +396,21 @@ $$cat-profile <name>          # Show profile configuration
 
 ### Utility Commands
 ```bash
-$$bypass on/off/status        # Toggle direct API mode
+$$proxy on                    # Enable proxy conversion (Claude → Target models)
+$$proxy off                   # Disable proxy (direct passthrough mode)
+$$proxy status                # Check if proxy is converting or passthrough
 $$ping                        # Test connectivity
 $$help                        # Show all $ commands
 $$export <filename>           # Export current config
+$$ask <question>              # Get AI-powered help using current profile
 ```
+
+**$$ask Command:**
+- Uses your current profile's AI model to answer questions about Antomix
+- Reads from the cached README documentation 
+- Works inside Claude Code or any connected app
+- Example: `$$ask how do I create a custom profile?`
+- Note: Requires running `antomix ask` from CLI first to cache docs
 
 </details>
 
@@ -346,12 +419,64 @@ $$export <filename>           # Export current config
 ## 🔧 Creating Custom Profiles
 
 <details>
+<summary>🆕 <strong>Interactive Profile Creation</strong></summary>
+
+Create custom profiles easily with the interactive CLI:
+
+```bash
+# Create a new profile interactively
+antomix profiles create
+
+# Create with a specific name
+antomix profiles create my-provider
+```
+
+The interactive wizard will guide you through:
+- 🏷️ Profile name and description
+- 🌐 API base URL configuration
+- 🔑 Environment variable for API key
+- 🤖 Model mappings (Claude → Your provider)
+- 🔧 Parameter transformations
+- 📦 Custom headers (optional)
+
+**Example session:**
+```bash
+$ antomix profiles create
+
+🔧 Create New Profile
+Press Enter to use default values
+
+Profile filename: my-llm
+Display name: My LLM Provider
+Description: Custom LLM provider for specialized models
+API base URL: https://api.myllm.com/v1
+Environment variable for API key: MY_LLM_API_KEY
+Add custom headers? No
+
+Model Mappings (map Claude models to your provider's models):
+Map claude-opus-4 to: my-llm-large
+Map claude-sonnet-4 to: my-llm-medium
+Map claude-3-5-haiku to: my-llm-fast
+
+✅ Profile created successfully!
+   Location: ~/.antomix/profiles/my-llm.yml
+   Environment variable: MY_LLM_API_KEY
+
+To use this profile:
+  1. Set your API key: export MY_LLM_API_KEY="your-api-key"
+  2. Start with: antomix claude --profile my-llm
+  3. Or switch to it: $$switch-profile my-llm
+```
+
+</details>
+
+<details>
 <summary>📝 <strong>Profile YAML Structure</strong></summary>
 
-Profiles are stored in `config/profiles/` and follow this structure:
+Custom profiles are stored in `~/.antomix/profiles/` as YAML files:
 
 ```yaml
-# config/profiles/my-custom.yml
+# ~/.antomix/profiles/my-custom.yml
 name: "Custom Provider"
 description: "Route requests to my custom API"
 
@@ -376,31 +501,10 @@ api:
   api_key: "$YOUR_PROVIDER_API_KEY"
   headers:
     # Custom headers if needed
+    Authorization: "Bearer $YOUR_PROVIDER_API_KEY"
 ```
 
-</details>
-
-<details>
-<summary>⚙️ <strong>Creating Profiles</strong></summary>
-
-Create new profiles by:
-
-1. **Manual Creation**: Add a new `.yml` file to `config/profiles/`
-2. **Copy Existing**: Use an existing profile as a template
-3. **Modify Settings**: Update API endpoints, keys, and model mappings
-4. **Test Connection**: Use `$$status` to verify the profile works
-
-Example workflow:
-```bash
-# 1. Copy existing profile
-cp config/profiles/groq.yml config/profiles/my-provider.yml
-
-# 2. Edit the configuration
-# Update API endpoints, keys, and model mappings
-
-# 3. Test the new profile
-antomix start --profile my-provider
-```
+You can manually edit these files after creation to fine-tune settings.
 
 </details>
 

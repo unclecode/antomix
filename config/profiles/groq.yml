@@ -1,5 +1,5 @@
 name: "Anthropic → Groq"
-description: "Route Anthropic requests to Groq models"
+description: "Uses Groq to route Anthropic requests to ultra-fast inference models"
 
 # Model mappings
 models:

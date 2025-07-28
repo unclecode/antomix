@@ -1,5 +1,5 @@
 name: "Anthropic → Gemini"
-description: "Route Anthropic requests to Google Gemini models"
+description: "Uses OpenRouter to route Anthropic requests to Google Gemini models"
 
 # Model mappings
 models:
