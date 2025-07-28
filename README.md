@@ -61,20 +61,20 @@ antomix claude --profile openrouter-qwen # [openai|groq|gemini|ollama|...]
 
 ```bash
 # Ask multiple models for help debugging
-$$colab o3,gpt41,oqw,grok4 Why is my Redis connection timing out in production?
+$$colab o3,gpt41,groq-qwen,grok4 Why is my Redis connection timing out in production?
 
 # Get creative ideas from different AI perspectives  
-$$colab gpt41,ogmp,sonnet4,grok4 Write a catchy marketing tagline for an eco-friendly water bottle
+$$colab gpt41,open-geminipro,sonnet4,grok4 Write a catchy marketing tagline for an eco-friendly water bottle
 
 # Compare solutions from various models
-$$colab o3,oqwt,gdp,gll What's the most efficient sorting algorithm for partially sorted data?
+$$colab o3,open-qwen,groq-deepseek,groq-llama What's the most efficient sorting algorithm for partially sorted data?
 
 # Use 'fresh' to exclude conversation history for unbiased responses
-$$colab oqw,o3pro,sonnet4 fresh Review this architecture without context
+$$colab open-qwen,o3pro,sonnet4 fresh Review this architecture without context
 ```
 
 **How it works:**
-- List models separated by commas (NO spaces: `o3,gpt41,gll` ✅ not `o3, gpt41, gll` ❌)
+- List models separated by commas (NO spaces: `o3,gpt41,groq-llama` ✅ not `o3, gpt41, groq-llama` ❌)
 - Models execute in parallel - if one fails, others still respond
 - See all responses in one organized view
 
@@ -90,7 +90,7 @@ Switch models temporarily for individual messages without changing your main pro
 $$set:groq-qwen What's the capital of France?
 $$set:o3pro Solve this complex problem: [problem]  
 $$set:open-grok4 Write a funny story about AI
-$$set:open-llama Local model response
+$$set:groq-llama Fast Groq inference
 
 # Using direct profile/model syntax
 $$set:groq/llama-3.3-70b-versatile Explain quantum computing
@@ -100,9 +100,9 @@ $$set:openrouter-qwen/anthropic/claude-opus-4 Deep analysis needed
 
 **Available shortcuts:**
 - **Groq**: `groq-qwen` `groq-llama` `groq-deepseek` `groq-kimi2` (fast inference)
-- **OpenAI**: `o3pro` `o3` `o4` `gpt41` (latest models) 
+- **OpenAI**: `o3pro` `o3` `o3mini` `o4` `gpt41` (latest models) 
 - **OpenRouter**: `open-qwen` `open-geminipro` `open-mistral` `open-grok4` (100+ models)
-- **Anthropic**: `open-opu4` `open-sonnet4` `haiku35` (Claude models)
+- **Anthropic**: `opus4` `sonnet4` `haiku35` (Claude models via OpenRouter)
 
 Manage profiles and system settings:
 
@@ -364,11 +364,11 @@ $$colab docs Write API documentation for this endpoint
 
 # Direct model lists (comma-separated, NO spaces!)
 $$colab o3,gpt41,sonnet4 Analyze this code for security issues
-$$colab gll,gdp,oqw fresh Compare these database options
-$$colab oqwt,o3pro,grok4 What's wrong with this algorithm?
+$$colab groq-llama,groq-deepseek,open-qwen fresh Compare these database options
+$$colab open-qwen,o3pro,grok4 What's wrong with this algorithm?
 
 # Managing collaborative sets
-$$colab set review gpt41,ogmf -- Please review this critically
+$$colab set review gpt41,open-geminiflash -- Please review this critically
 $$colab set debug o3,gpt41 -- Debug this step by step
 $$colab remove debug
 $$colab                        # List all available sets
