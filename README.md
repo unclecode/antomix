@@ -81,18 +81,22 @@ $$colab open-qwen,o3pro,sonnet4 fresh Review this architecture without context
 > [!TIP]
 > Check the detailed docs below for pre-configured model sets like `think`, `code`, and `docs` that group the best models for specific tasks!
 
-### 4️⃣ `$$set` Command - Use Any Model for Single Messages
+### 4️⃣ `$$` Command - Use Any Model for Single Messages
 
 Switch models temporarily for individual messages without changing your main profile:
 
 ```bash
-# Using shortcuts (25+ pre-configured)
-$$set:groq-qwen What's the capital of France?
-$$set:o3pro Solve this complex problem: [problem]  
-$$set:open-grok4 Write a funny story about AI
-$$set:groq-llama Fast Groq inference
+# Using shortcuts (25+ pre-configured) - just type $$[shortcut]
+$$groq-qwen What's the capital of France?
+$$o3pro Solve this complex problem: [problem]  
+$$open-grok4 Write a funny story about AI
+$$groq-llama Fast Groq inference
 
-# Using direct profile/model syntax
+# Or use explicit $$set: syntax
+$$set:groq-qwen What's the capital of France?
+$$set:o3pro Solve this complex problem: [problem]
+
+# Using direct profile/model syntax with $$set:
 $$set:groq/llama-3.3-70b-versatile Explain quantum computing
 $$set:openai/o3-pro Analyze this code: [code]
 $$set:openrouter-qwen/anthropic/claude-opus-4 Deep analysis needed
@@ -104,6 +108,9 @@ $$set:openrouter-qwen/anthropic/claude-opus-4 Deep analysis needed
 - **OpenRouter**: `open-qwen` `open-geminipro` `open-mistral` `open-grok4` (100+ models)
 - **Anthropic**: `opus4` `sonnet4` `haiku35` (Claude models via OpenRouter)
 
+> [!TIP]
+> **Create your own shortcuts!** Add custom shortcuts in `~/.antomix/shortcuts.yml` or use `antomix shortcuts add mymodel profile/model`. See [Shortcuts Management](#shortcuts-management) below for details.
+
 Manage profiles and system settings:
 
 ```bash
@@ -114,7 +121,8 @@ $$profiles                     # See all available profiles
 ```
 
 > [!TIP]
-> **`$$set` is temporary, `$$switch-profile` is permanent!** Use `$$set` for one-off messages, `$$switch-profile` to change your main model.
+> **`$$[shortcut]` is the easiest way!** Just type `$$groq-qwen message` instead of `$$set:groq-qwen message`. Both work!
+> **Temporary vs Permanent:** `$$` commands are temporary (one message), `$$switch-profile` is permanent (changes your main model).
 
 ---
 
@@ -334,14 +342,18 @@ antomix --version                                  # Show version
 
 Use these commands directly in Claude Code or any connected application:
 
-### `$$set` Command - Temporary Model Switching
+### `$$` Command - Temporary Model Switching
 ```bash
-# Using shortcuts (fastest way)
+# Using shortcuts (fastest way) - just type $$[shortcut]
+$$groq-qwen How does photosynthesis work?
+$$o3pro Solve this complex reasoning task
+$$open-grok4 Tell me a joke about programming
+
+# Or use explicit $$set: syntax
 $$set:groq-qwen How does photosynthesis work?
 $$set:o3pro Solve this complex reasoning task
-$$set:open-grok4 Tell me a joke about programming
 
-# Using full profile/model syntax  
+# Using full profile/model syntax with $$set:
 $$set:groq/qwen/qwen3-32b Quick question here
 $$set:openai/o3-pro Complex analysis needed
 $$set:openrouter-qwen/x-ai/grok-4 Creative writing task
@@ -354,6 +366,12 @@ $$shortcuts add myfast groq/llama-3.3-70b-versatile  # Add custom shortcut
 $$shortcuts remove myfast      # Remove shortcut
 $$shortcuts stats              # Show shortcuts statistics
 ```
+
+**Creating Custom Shortcuts:**
+- Edit `~/.antomix/shortcuts.yml` directly
+- Or use CLI: `antomix shortcuts add mymodel profile/model`
+- Example: `antomix shortcuts add mychat openai/gpt-4`
+- Then use it: `$$mychat What's the weather like?`
 
 ### `$$colab` Command - Collaborative AI Queries
 ```bash
