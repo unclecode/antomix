@@ -6,11 +6,13 @@
 
 > **Use Claude Code with ANY AI model** - OpenAI, Groq, Gemini, Local Models, OpenRouter's 100+ models, and more!
 
+https://github.com/user-attachments/assets/5fdfce3d-dc20-4825-b4df-ea2787e54858
+
 ## 🎯 Why Antomix?
 
 **Hey there! I'm [Unclecode](https://github.com/unclecode), author of [Crawl4AI](https://github.com/unclecode/crawl4ai) (![GitHub Repo stars](https://img.shields.io/github/stars/unclecode/crawl4ai?style=social) ⭐).** 
 
-I absolutely **love Claude Code** - it's not just about the model, it's about how brilliantly developed this agentic coding assistant is. But I wanted this incredible experience with **ALL models**, not just Claude. So I built Antomix!
+After trying alternatives like Gemini CLI and Qwen Code, I realized something: **The magic of Claude Code isn't just the model - it's the assistant itself.** The way it's engineered as an agentic coding assistant is what makes it so efficient. I wanted this incredible experience with **ALL models**, not just Claude. So I built Antomix!
 
 **The result:** A universal proxy that converts any app connecting to Anthropic to work with:
 - 🔥 **Groq** (lightning fast!)
@@ -67,9 +69,9 @@ $$colab o3,gpt41,groq-qwen,grok4 Why is my Redis connection timing out in produc
 $$colab gpt41,open-geminipro,sonnet4,grok4 Write a catchy marketing tagline for an eco-friendly water bottle
 
 # Compare solutions from various models
-$$colab o3,open-qwen,groq-deepseek,groq-llama What's the most efficient sorting algorithm for partially sorted data?
+$$colab o3,open-qwen,groq-deepseek,groq-llama What is the most efficient sorting algorithm for partially sorted data
 
-# Use 'fresh' to exclude conversation history for unbiased responses
+# Use `fresh` to exclude conversation history for unbiased responses
 $$colab open-qwen,o3pro,sonnet4 fresh Review this architecture without context
 ```
 
@@ -81,19 +83,21 @@ $$colab open-qwen,o3pro,sonnet4 fresh Review this architecture without context
 > [!TIP]
 > Check the detailed docs below for pre-configured model sets like `think`, `code`, and `docs` that group the best models for specific tasks!
 
+https://github.com/user-attachments/assets/1a48f6e0-1f4c-408d-b100-88f26bb4e343
+
 ### 4️⃣ `$$` Command - Use Any Model for Single Messages
 
 Switch models temporarily for individual messages without changing your main profile:
 
 ```bash
 # Using shortcuts (25+ pre-configured) - just type $$[shortcut]
-$$groq-qwen What's the capital of France?
+$$groq-qwen What is the capital of France?
 $$o3pro Solve this complex problem: [problem]  
 $$open-grok4 Write a funny story about AI
 $$groq-llama Fast Groq inference
 
 # Or use explicit $$set: syntax
-$$set:groq-qwen What's the capital of France?
+$$set:groq-qwen What is the capital of France?
 $$set:o3pro Solve this complex problem: [problem]
 
 # Using direct profile/model syntax with $$set:
@@ -371,7 +375,7 @@ $$shortcuts stats              # Show shortcuts statistics
 - Edit `~/.antomix/shortcuts.yml` directly
 - Or use CLI: `antomix shortcuts add mymodel profile/model`
 - Example: `antomix shortcuts add mychat openai/gpt-4`
-- Then use it: `$$mychat What's the weather like?`
+- Then use it: `$$mychat What is the weather like?`
 
 ### `$$colab` Command - Collaborative AI Queries
 ```bash
@@ -383,7 +387,7 @@ $$colab docs Write API documentation for this endpoint
 # Direct model lists (comma-separated, NO spaces!)
 $$colab o3,gpt41,sonnet4 Analyze this code for security issues
 $$colab groq-llama,groq-deepseek,open-qwen fresh Compare these database options
-$$colab open-qwen,o3pro,grok4 What's wrong with this algorithm?
+$$colab open-qwen,o3pro,grok4 What is wrong with this algorithm?
 
 # Managing collaborative sets
 $$colab set review gpt41,open-geminiflash -- Please review this critically
