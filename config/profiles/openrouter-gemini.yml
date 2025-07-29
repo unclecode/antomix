@@ -1,29 +1,27 @@
 name: "Anthropic → Gemini"
-description: "Uses Google Gemini API directly to route Anthropic requests to Gemini models"
+description: "Uses OpenRouter to route Anthropic requests to Google Gemini models"
 
 # Model mappings
 models:
   "claude-3-5-haiku-20241022": 
-    - "gemini-2.0-flash"
+    - "google/gemini-2.0-flash-lite-001"
   "claude-opus-4-20250514": 
-    - "gemini-2.5-pro"
+    - "google/gemini-2.5-pro"
   "claude-sonnet-4-20250514": 
-    - "gemini-2.5-flash"
+    - "google/gemini-2.5-flash"
 
 # Claude code specific details
 claude:
   fast_model: "claude-3-5-haiku-20241022"
-
+  
 # Parameter transformations for Gemini models
 parameters:
   "*":  # All Gemini models
     "[max_tokens]": "max_completion_tokens"  # Rename parameter
-    "max_completion_tokens": 8192  # Set default limit
 
 # API configuration
 api:
-  absolute_url: True  # Use absolute URLs for Gemini API
-  base_url: "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions"
-  api_key: "$GEMINI_API_KEY"
+  base_url: "https://openrouter.ai/api"
+  api_key: "$OPENROUTER_API_KEY"
   headers:
     # Custom headers if needed

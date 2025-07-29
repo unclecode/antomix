@@ -1,5 +1,5 @@
 name: "Anthropic → OpenRouter (Qwen)"
-description: "Route Anthropic requests to Qwen models via OpenRouter"
+description: "Uses OpenRouter to route Anthropic requests to Alibaba's Qwen models"
 
 # Model mappings
 models:

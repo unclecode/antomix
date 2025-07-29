@@ -12,6 +12,10 @@ shortcuts:
   gpt41: "openai/gpt-4.1"
   gpt41mini: "openai/gpt-4.1-mini"
 
+  # Gemini shortcuts (direct API)
+  gemini-flash: "gemini/gemini-2.5-flash"
+  gemini-pro: "gemini/gemini-2.5-pro"
+
   # Anthropic shortcuts
   opus4: "openrouter-qwen/anthropic/claude-opus-4"
   sonnet4: "openrouter-qwen/anthropic/claude-sonnet-4"

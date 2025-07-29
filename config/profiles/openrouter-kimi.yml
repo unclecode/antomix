@@ -1,5 +1,5 @@
-name: "Anthropic → OpenRouter (OpenAI)"
-description: "Route Anthropic requests to OpenAI models via OpenRouter"
+name: "Anthropic → OpenRouter (Kimi)"
+description: "Uses OpenRouter to route Anthropic requests to Moonshot AI's Kimi models"
 
 # Model mappings
 models:

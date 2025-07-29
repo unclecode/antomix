@@ -109,6 +109,7 @@ $$set:openrouter-qwen/anthropic/claude-opus-4 Deep analysis needed
 **Available shortcuts:**
 - **Groq**: `groq-qwen` `groq-llama` `groq-deepseek` `groq-kimi2` (fast inference)
 - **OpenAI**: `o3pro` `o3` `o3mini` `o4` `gpt41` (latest models) 
+- **Gemini**: `gemini-flash` `gemini-pro` (direct Google API)
 - **OpenRouter**: `open-qwen` `open-geminipro` `open-mistral` `open-grok4` (100+ models)
 - **Anthropic**: `opus4` `sonnet4` `haiku35` (Claude models via OpenRouter)
 
@@ -524,6 +525,20 @@ api:
   headers:
     # Custom headers if needed
     Authorization: "Bearer $YOUR_PROVIDER_API_KEY"
+  
+  # For providers with non-standard OpenAI endpoints (like Google Gemini)
+  # Set absolute_url: true to use base_url as the complete endpoint
+  absolute_url: false  # Default: false (appends /v1/chat/completions)
+```
+
+**Note on `absolute_url`:** Most providers follow OpenAI's URL pattern where you provide a base URL and `/v1/chat/completions` is appended. However, some providers like Google Gemini use a different pattern. For these cases, set `absolute_url: true` and provide the complete endpoint URL:
+
+```yaml
+# Example: Google Gemini configuration
+api:
+  absolute_url: true
+  base_url: "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions"
+  api_key: "$GEMINI_API_KEY"
 ```
 
 You can manually edit these files after creation to fine-tune settings.
@@ -587,11 +602,13 @@ Don't have API keys yet? Here's where to create them:
 ## 📋 Available Profiles
 
 - `groq` - Groq API (super fast inference)
-- `openai` - OpenAI GPT models  
-- `gemini` - Google Gemini
+- `openai` - OpenAI GPT models
+- `gemini` - Google Gemini (direct API)
+- `openrouter-gemini` - Google Gemini via OpenRouter
 - `openrouter-qwen` - Qwen via OpenRouter
 - `openrouter-kimi` - Kimi via OpenRouter
-- `default` - OpenAI GPT-4-1 and O3 by default
+- `ollama-qwen` - Qwen via Ollama (local)
+- `default` - OpenAI GPT-4.1 and O3 by default
 
 ---
 
