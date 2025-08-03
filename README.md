@@ -110,6 +110,7 @@ $$set:openrouter-qwen/anthropic/claude-opus-4 Deep analysis needed
 - **Groq**: `groq-qwen` `groq-llama` `groq-deepseek` `groq-kimi2` (fast inference)
 - **OpenAI**: `o3pro` `o3` `o3mini` `o4` `gpt41` (latest models) 
 - **Gemini**: `gemini-flash` `gemini-pro` (direct Google API)
+- **Cerebras**: `cerebras-coder` `cerebras-think` (ultra-fast large models)
 - **OpenRouter**: `open-qwen` `open-geminipro` `open-mistral` `open-grok4` (100+ models)
 - **Anthropic**: `opus4` `sonnet4` `haiku35` (Claude models via OpenRouter)
 
@@ -591,6 +592,7 @@ Don't have API keys yet? Here's where to create them:
 - **💎 Google Gemini** → [Get API Key](https://aistudio.google.com/app/apikey)
 
 ### Specialty Providers
+- **🧠 Cerebras** (Ultra-fast inference) → [Get API Key](https://cloud.cerebras.ai/api-keys)
 - **🔬 Mistral AI** → [Get API Key](https://console.mistral.ai/api-keys/)
 - **🚀 xAI** (Grok models) → [Get API Key](https://console.x.ai/)
 
@@ -604,6 +606,7 @@ Don't have API keys yet? Here's where to create them:
 - `groq` - Groq API (super fast inference)
 - `openai` - OpenAI GPT models
 - `gemini` - Google Gemini (direct API)
+- `cerebras` - Cerebras AI (ultra-fast large models)
 - `openrouter-gemini` - Google Gemini via OpenRouter
 - `openrouter-qwen` - Qwen via OpenRouter
 - `openrouter-kimi` - Kimi via OpenRouter
