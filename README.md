@@ -110,7 +110,7 @@ $$set:openrouter-qwen/anthropic/claude-opus-4 Deep analysis needed
 - **Groq**: `groq-qwen` `groq-llama` `groq-deepseek` `groq-kimi2` (fast inference)
 - **OpenAI**: `o3pro` `o3` `o3mini` `o4` `gpt41` (latest models) 
 - **Gemini**: `gemini-flash` `gemini-pro` (direct Google API)
-- **Cerebras**: `cerebras-coder` `cerebras-think` (ultra-fast large models)
+- **Cerebras**: `cerebras-coder` `cerebras-qwen` (ultra-fast large models)
 - **OpenRouter**: `open-qwen` `open-geminipro` `open-mistral` `open-grok4` (100+ models)
 - **Anthropic**: `opus4` `sonnet4` `haiku35` (Claude models via OpenRouter)
 

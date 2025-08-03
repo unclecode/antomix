@@ -18,7 +18,7 @@ shortcuts:
 
   # Cerebras shortcuts
   cerebras-coder: "cerebras/qwen-3-coder-480b"
-  cerebras-think: "cerebras/qwen-3-235b-a22b-thinking-2507"
+  cerebras-qwen: "cerebras/qwen-3-235b-a22b-instruct-2507"
 
   # Anthropic shortcuts
   opus4: "openrouter-qwen/anthropic/claude-opus-4"
