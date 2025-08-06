@@ -1,0 +1,37 @@
+name: "Anthropic → Cerebras (GPT-OSS)"
+description: "Uses Cerebras AI to route Anthropic requests to GPT-OSS-120B model"
+
+# Model mappings
+models:
+  "claude-3-5-haiku-20241022": 
+    - "gpt-oss-120b"
+  "claude-sonnet-4-20250514": 
+    - "gpt-oss-120b"
+  "claude-opus-4-20250514": 
+    - "gpt-oss-120b"
+
+# Claude code specific details
+claude:
+  fast_model: "claude-3-5-haiku-20241022"
+
+# Parameter transformations for GPT-OSS model
+parameters:
+  "gpt-oss-120b":
+    "[max_tokens]": "max_completion_tokens"
+    "max_completion_tokens": 8192
+    # Dynamic reasoning_effort based on which Claude model was requested
+    "reasoning_effort": "low"  # Default for haiku
+
+# Model-specific parameter overrides
+model_parameters:
+  "claude-sonnet-4-20250514":
+    "reasoning_effort": "medium"
+  "claude-opus-4-20250514":
+    "reasoning_effort": "high"
+
+# API configuration
+api:
+  base_url: "https://api.cerebras.ai"
+  api_key: "$CEREBRAS_API_KEY"
+  headers:
+    # Custom headers if needed

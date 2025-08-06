@@ -546,6 +546,32 @@ You can manually edit these files after creation to fine-tune settings.
 
 </details>
 
+<details>
+<summary>🧠 <strong>Reasoning Models (GPT-OSS)</strong></summary>
+
+**GPT-OSS-120B** is a reasoning-capable model available through multiple providers. Antomix automatically adjusts the `reasoning_effort` parameter based on which Claude model you're using:
+
+- **Claude Haiku** → `reasoning_effort: "low"` (fast responses)
+- **Claude Sonnet** → `reasoning_effort: "medium"` (balanced reasoning)
+- **Claude Opus** → `reasoning_effort: "high"` (deep reasoning)
+
+**Available GPT-OSS profiles:**
+- `groq-gpt-oss` - Via Groq (ultra-fast)
+- `cerebras-gpt-oss` - Via Cerebras
+- `openrouter-gpt-oss` - Via OpenRouter
+
+**Usage example:**
+```bash
+# Start with GPT-OSS reasoning model
+antomix claude --profile groq-gpt-oss
+
+# The reasoning effort auto-adjusts based on your Claude model choice
+```
+
+This feature uses the new `model_parameters` section in profiles to apply parameters based on the source (Claude) model rather than just the destination model.
+
+</details>
+
 ---
 
 ## 📊 Logging and Monitoring
@@ -604,12 +630,15 @@ Don't have API keys yet? Here's where to create them:
 ## 📋 Available Profiles
 
 - `groq` - Groq API (super fast inference)
+- `groq-gpt-oss` - Groq with GPT-OSS-120B (reasoning model)
 - `openai` - OpenAI GPT models
 - `gemini` - Google Gemini (direct API)
 - `cerebras` - Cerebras AI (ultra-fast large models)
+- `cerebras-gpt-oss` - Cerebras with GPT-OSS-120B (reasoning model)
 - `openrouter-gemini` - Google Gemini via OpenRouter
 - `openrouter-qwen` - Qwen via OpenRouter
 - `openrouter-kimi` - Kimi via OpenRouter
+- `openrouter-gpt-oss` - OpenRouter with GPT-OSS-120B (reasoning model)
 - `ollama-qwen` - Qwen via Ollama (local)
 - `default` - OpenAI GPT-4.1 and O3 by default
 
