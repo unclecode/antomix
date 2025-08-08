@@ -1,5 +1,5 @@
-name: "Anthropic → OpenAI (Default)"
-description: "Uses OpenAI as default provider to route Anthropic requests to GPT-5 models with reasoning support"
+name: "Anthropic → OpenAI (GPT-5)"
+description: "Uses OpenAI to route Anthropic requests to GPT-5 models with reasoning support"
 
 # Model mappings
 models:
