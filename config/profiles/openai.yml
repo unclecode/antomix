@@ -22,6 +22,8 @@ parameters:
     "[max_tokens]": "max_completion_tokens"  # Rename parameter
   "gpt-5":
     "reasoning_effort": "minimal"  # Default for GPT-5
+    "verbosity": "high"
+    "max_completion_tokens": 100000
 
 # Model-specific parameter overrides based on source Claude model
 model_parameters:
