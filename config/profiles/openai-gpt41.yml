@@ -1,0 +1,29 @@
+name: "Anthropic → OpenAI"
+description: "Uses OpenAI to route Anthropic requests to GPT-4.1, O3, and other OpenAI models"
+
+# Model mappings
+models:
+  "claude-3-5-haiku-20241022": 
+    - "gpt-4.1-mini"
+  "claude-opus-4-20250514": 
+    - "o3"
+  "claude-sonnet-4-20250514": 
+    - "gpt-4.1"
+
+# Claude code specific details
+claude:
+  fast_model: "claude-3-5-haiku-20241022"
+  
+# Parameter transformations for OpenAI models
+parameters:
+  "*":  # All OpenAI models
+    "[max_tokens]": "max_completion_tokens"  # Rename parameter
+  "*o[3-9]*":  # All o-series models (o3, o4, o5, etc.)
+    "temperature": 1  # Set constant value for o-series
+
+# API configuration
+api:
+  base_url: "https://api.openai.com"
+  api_key: "$OPENAI_API_KEY"
+  headers:
+    # Custom headers if needed

@@ -1,14 +1,16 @@
 name: "Anthropic → OpenAI (Default)"
-description: "Uses OpenAI as default provider to route Anthropic requests to GPT and O-series models"
+description: "Uses OpenAI as default provider to route Anthropic requests to GPT-5 models with reasoning support"
 
-# Model mappings (from config/models_oai.json)
+# Model mappings
 models:
   "claude-3-5-haiku-20241022": 
     - "gpt-4.1-mini"
+  "claude-opus-4-1-20250805": 
+    - "gpt-5"
   "claude-opus-4-20250514": 
-    - "o3"
+    - "gpt-5"
   "claude-sonnet-4-20250514": 
-    - "gpt-4.1"
+    - "gpt-5"
 
 # Claude code specific details
 claude:
@@ -18,8 +20,17 @@ claude:
 parameters:
   "*":  # All OpenAI models
     "[max_tokens]": "max_completion_tokens"  # Rename parameter
-  "*o[3-9]*":  # All o-series models (o3, o4, o5, etc.)
-    "temperature": 1  # Set constant value for o-series
+  "gpt-5":
+    "reasoning_effort": "minimal"  # Default for GPT-5
+
+# Model-specific parameter overrides based on source Claude model
+model_parameters:
+  "claude-sonnet-4-20250514":
+    "reasoning_effort": "minimal"
+  "claude-opus-4-20250514":
+    "reasoning_effort": "medimum"
+  "claude-opus-4-1-20250805":
+    "reasoning_effort": "medimum"
 
 # API configuration
 api:
