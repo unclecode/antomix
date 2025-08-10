@@ -30,9 +30,9 @@ model_parameters:
   "claude-sonnet-4-20250514":
     "reasoning_effort": "minimal"
   "claude-opus-4-20250514":
-    "reasoning_effort": "medimum"
+    "reasoning_effort": "medium"
   "claude-opus-4-1-20250805":
-    "reasoning_effort": "medimum"
+    "reasoning_effort": "medium"
 
 # API configuration
 api:
